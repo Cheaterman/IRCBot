@@ -15,4 +15,5 @@ class CommandParser(object):
         for regexp, callback in self.commands.items():
             match = regexp.match(msg)
             if match:
-                return not callback(bot, channel, user, *match.groups())
+                if not callback(bot, channel, user, *match.groups()):
+                    return True
