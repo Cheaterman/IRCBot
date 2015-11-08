@@ -4,6 +4,22 @@ from ircbot import bot
 from commands import seen, time
 
 
+@bot.command('!help')
+def help(self, channel, user):
+    msg = 'Command list: '
+    commands = [
+        '!help',
+        '!botsnack',
+        '!fortune',
+        '!seen',
+        '!time',
+        '!toke',
+        'doobie doobie doo',
+    ]
+    for i, command in enumerate(commands):
+        msg += command + (', ' if i < len(commands) - 1 else '')
+    self.say(channel, msg, user)
+
 @bot.command('!botsnack')
 @bot.command('(?i)(.+botsnack)')
 def botsnack(self, channel, user, msg=None):
