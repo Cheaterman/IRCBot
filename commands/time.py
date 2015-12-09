@@ -47,7 +47,7 @@ def get_time(self, channel, of, to=None):
                 nick, timezone_name = line.split(': ')
                 date = datetime.now(timezone(timezone_name[:-1]))
                 msg = "It is currently {}{}".format(
-                    date.strftime('%H:%M:%S'),
+                    date.strftime('%H:%M:%S on %d-%m-%Y'),
                     " where {} lives".format(of) if of != to else ''
                 )
                 return self.say(channel, msg, to)
