@@ -42,7 +42,7 @@ def toke(self, channel, user, to=None):
     msg = "Puff! Puff! Pass{}! ^__^".format(' to {}'.format(to) if to else '')
     self.say(channel, msg, user)
 
-@bot.command('(?i)doobie doobie doo')
+@bot.command('.*(?i)doobie doobie doo')
 def doobie_doobie_do(self, channel, user):
     url = 'https://youtu.be/j4XhDpSgHrs'
     msg = "{} owiiiiii! ^__^".format(url)
