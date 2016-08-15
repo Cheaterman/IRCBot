@@ -3,6 +3,7 @@ import os
 from ircbot import bot
 from commands import seen, time
 
+from random import randint
 
 @bot.command('!help')
 def help(self, channel, user):
@@ -15,6 +16,7 @@ def help(self, channel, user):
         '!time',
         '!toke',
         'doobie doobie doo',
+        '!drug',
     ]
     for i, command in enumerate(commands):
         msg += command + (', ' if i < len(commands) - 1 else '')
@@ -40,6 +42,15 @@ def fortune(self, channel, user):
 @bot.command('!toke(?:\s+(\w+))?')
 def toke(self, channel, user, to=None):
     msg = "Puff! Puff! Pass{}! ^__^".format(' to {}'.format(to) if to else '')
+    self.say(channel, msg, user)
+
+@bot.command('!drug(?:\s+(\w+))?')
+def toke(self, channel, user, to=None):
+    drugs = ["Cocain","LSD","DMT","Mescaline","Shrooms","MDMA","Extacy","Salvia","Opium"]
+    drug = drugs[randint(0,len(drugs)-1)]
+    msg = "Here is some {}! take it! *bliblibli*".format(drug)
+    if to:
+        user = to
     self.say(channel, msg, user)
 
 @bot.command('.*(?i)doobie doobie doo')
