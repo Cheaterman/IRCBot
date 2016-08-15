@@ -16,6 +16,7 @@ def help(self, channel, user):
         '!seen',
         '!time',
         '!toke',
+        '!roll',
         'doobie doobie doo',
         '!drug',
     ]
@@ -46,6 +47,7 @@ def toke(self, channel, user, to=None):
     self.say(channel, msg, user)
 
 @bot.command('.*(?i)doobie doobie doo')
+@bot.command('!roll')
 def doobie_doobie_do(self, channel, user):
     url = 'https://youtu.be/j4XhDpSgHrs'
     msg = "{} owiiiiii! ^__^".format(url)
