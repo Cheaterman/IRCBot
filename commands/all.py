@@ -56,18 +56,25 @@ def doobie_doobie_do(self, channel, user):
 @bot.command('!drug(?:\s+(\w+))?')
 def drug(self, channel, user, to=None):
     drugs = [
-        'cocain',
+        'cocaine',
         'LSD',
         'DMT',
         'mescaline',
-        'shrooms',
+        'mushrooms',
         'MDMA',
         'ecstasy',
         'salvia',
         'opium',
+        'ketamine',
+        'hasch',
+        'weed oil',
+        'bud',
     ]
-    msg = 'Here is some {}! Take it! *bliblibli* ^__^'.format(
-        random.choice(drugs),
+    drug = random.choice(drugs)
+    msg = 'Here {} some {}! Take {}! *bliblibli* ^__^'.format(
+        'is' if drug != 'mushrooms' else 'are',
+        drug,
+        'it' if drug != 'mushrooms' else 'them',
     )
     self.say(channel, msg, to if to else user)
 
