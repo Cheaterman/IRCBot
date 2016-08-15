@@ -3,6 +3,8 @@ import os
 from ircbot import bot
 from commands import seen, time
 
+import random
+
 
 @bot.command('!help')
 def help(self, channel, user):
@@ -15,6 +17,7 @@ def help(self, channel, user):
         '!time',
         '!toke',
         'doobie doobie doo',
+        '!drug',
     ]
     for i, command in enumerate(commands):
         msg += command + (', ' if i < len(commands) - 1 else '')
@@ -47,6 +50,24 @@ def doobie_doobie_do(self, channel, user):
     url = 'https://youtu.be/j4XhDpSgHrs'
     msg = "{} owiiiiii! ^__^".format(url)
     self.say(channel, msg, user)
+
+@bot.command('!drug(?:\s+(\w+))?')
+def drug(self, channel, user, to=None):
+    drugs = [
+        "Cocain",
+        "LSD",
+        "DMT",
+        "Mescaline",
+        "Shrooms",
+        "MDMA",
+        "Ecstasy",
+        "Salvia",
+        "Opium",
+    ]
+    msg = "Here is some {}! Take it! *bliblibli* ^__^".format(
+        random.choice(drugs),
+    )
+    self.say(channel, msg, to if to else user)
 
 @bot.command('!join ([^ ]+)')
 def join(self, channel, user, target):
