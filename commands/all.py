@@ -19,6 +19,7 @@ def help(self, channel, user):
         '!roll',
         'doobie doobie doo',
         '!drug',
+        '!drink',
     ]
     for i, command in enumerate(commands):
         msg += command + (', ' if i < len(commands) - 1 else '')
@@ -77,6 +78,11 @@ def drug(self, channel, user, to=None):
         'it' if drug != 'mushrooms' else 'them',
     )
     self.say(channel, msg, to if to else user)
+
+@bot.command('!drink(?:\s+(\w+))?')
+def drink(self, channel, user, to=None):
+    msg = "Owiii cheers{}! ^__^".format((' ' + to) if to else '')
+    self.say(channel, msg, user)
 
 @bot.command('!join ([^ ]+)')
 def join(self, channel, user, target):
