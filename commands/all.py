@@ -16,6 +16,7 @@ def help(self, channel, user):
         '!seen',
         '!time',
         '!toke',
+        '!dab',
         '!roll',
         'doobie doobie doo',
         '!drug',
@@ -46,6 +47,10 @@ def fortune(self, channel, user):
 def toke(self, channel, user, to=None):
     msg = "Puff! Puff! Pass{}! ^__^".format(' to {}'.format(to) if to else '')
     self.say(channel, msg, user)
+
+@bot.command('!dab')
+def dab(self, channel, user):
+    self.say(channel, "Yayyy superwax! Enjoy ^__^", user)
 
 @bot.command('.*(?i)doobie doobie doo')
 @bot.command('!roll')
