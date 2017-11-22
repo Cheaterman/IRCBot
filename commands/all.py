@@ -18,6 +18,7 @@ def help(self, channel, user):
         '!toke',
         '!dab',
         '!roll',
+        '!salve',
         'doobie doobie doo',
         '!drug',
         '!drink',
@@ -51,6 +52,10 @@ def toke(self, channel, user, to=None):
 @bot.command('!dab')
 def dab(self, channel, user):
     self.say(channel, "Yayyy superwax! Enjoy ^__^", user)
+@bot.command('!salve(?:\s+(\w+))?')
+def salve(self, channel, user, to=None):
+    msg = "Saaaaaaaaaalve{}! ^__^".format(' to {}'.format(to) if to else '')
+    self.say(channel, msg, user)
 
 @bot.command('.*(?i)doobie doobie doo')
 @bot.command('!roll')
