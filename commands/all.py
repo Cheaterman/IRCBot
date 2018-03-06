@@ -16,6 +16,7 @@ def help(self, channel, user):
         '!seen',
         '!time',
         '!toke',
+        '!caffeinated-toke',
         '!dab',
         '!roll',
         '!salve',
@@ -103,3 +104,8 @@ def join(self, channel, user, target):
 def part(self, channel, user, target):
     if user == 'Cheaterman':
         self.leave(target)
+
+@bot.command('!caffeinated-toke(?:\s+(\w+))?')
+def toke(self, channel, user, to=None):
+    msg = "Sip, Puff! Pass{}! ^__^".format(' to {}'.format(to) if to else '')
+    self.say(channel, msg, user)
