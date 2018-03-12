@@ -38,15 +38,32 @@ def time(self, channel, user, argv=None):
         get_time(self, channel, of=argv[0], to=user)
 
 def get_time(self, channel, of, to=None):
+    time_message = "It is currently {}{}"
+
     if not to:
         to = of
+
+    try:
+        tz = timezone(of)
+    except:
+        tz = None
+
+    if tz:
+        return self.say(
+            channel,
+            time_message.format(
+                datetime.now(tz).strftime('%H:%M:%S on %d-%m-%Y'),
+                " in {}".format(of),
+            ),
+            to
+        )
 
     with open(os.path.join(self.factory.path, 'timezones.yml')) as f:
         for line in f.readlines():
             if line.startswith(of + ':'):
                 nick, timezone_name = line.split(': ')
                 date = datetime.now(timezone(timezone_name[:-1]))
-                msg = "It is currently {}{}".format(
+                msg = time_message.format(
                     date.strftime('%H:%M:%S on %d-%m-%Y'),
                     " where {} lives".format(of) if of != to else ''
                 )

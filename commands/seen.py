@@ -4,7 +4,7 @@ import re
 from datetime import datetime
 
 from ircbot import bot
-from logging import DATE_FORMAT
+from chatlog import DATE_FORMAT
 
 
 @bot.command('!seen (\w+)')

@@ -2,7 +2,7 @@ import os
 
 from twisted.words.protocols import irc
 
-from logging import MessageLogger
+from chatlog import MessageLogger
 
 
 class IRCBot(irc.IRCClient):

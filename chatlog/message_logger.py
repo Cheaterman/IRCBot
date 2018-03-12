@@ -1,6 +1,6 @@
 import time
 
-from logging import DATE_FORMAT
+from chatlog import DATE_FORMAT
 
 
 class MessageLogger:
