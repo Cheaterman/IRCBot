@@ -1,7 +1,7 @@
 import os
 
 from ircbot import bot
-from commands import seen, time
+from commands import seen, strain, time
 
 import random
 
