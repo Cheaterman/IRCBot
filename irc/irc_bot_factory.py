@@ -7,12 +7,17 @@ from commands import CommandParser
 class IRCBotFactory(protocol.ClientFactory):
     protocol = IRCBot
 
-    def __init__(self, hostname, port, channel, path):
+    def __init__(self, hostname, port, channel, path, nickname, password):
         self.hostname = hostname
         self.port = port
         self.channel = channel
         self.path = path
+        self.nickname = nickname
+        self.password = password
         self.commands = CommandParser()
+
+    def buildProtocol(self, address):
+        return self.protocol(self, self.nickname, self.password)
 
     def clientConnectionLost(self, connector, reason):
         print('Connection lost: {}'.format(reason))

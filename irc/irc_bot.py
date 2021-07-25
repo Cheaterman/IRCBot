@@ -6,7 +6,11 @@ from chatlog import MessageLogger
 
 
 class IRCBot(irc.IRCClient):
-    nickname = 'Weedykins'
+    def __init__(self, factory, nickname, password):
+        self.factory = factory
+        self.nickname = nickname
+        self.password = f'{nickname}:{password}'
+        super().__init__()
 
     def connectionMade(self):
         irc.IRCClient.connectionMade(self)
