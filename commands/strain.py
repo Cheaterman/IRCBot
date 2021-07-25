@@ -9,5 +9,6 @@ def strain(self, channel, user, name):
 
     if not data:
         say(f'Sorry, strain "{name}" not found :-S')
+        return
 
     say(data[0].description)
