@@ -15,12 +15,12 @@ class IRCBotFactory(protocol.ClientFactory):
         self.commands = CommandParser()
 
     def clientConnectionLost(self, connector, reason):
-        print "Connection lost: {}".format(reason)
-        print "Reconnecting..."
+        print('Connection lost: {}'.format(reason))
+        print('Reconnecting...')
         connector.connect()
 
     def clientConnectionFailed(self, connector, reason):
-        print "Connection failed: {}".format(reason)
+        print('Connection failed: {}'.format(reason))
         reactor.stop()
 
     def command(self, pattern):

@@ -1,1 +1,1 @@
-from parser import CommandParser
+from .parser import CommandParser
