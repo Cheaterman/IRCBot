@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-LEAFLY_URI = 'https://www.leafly.com'
+LEAFLY_URI = 'https://consumer-api.leafly.com/api/search/v1'
 
 
 @dataclass
@@ -15,11 +15,8 @@ class Strain:
 
 
 def search(strain_name):
-    response = requests.get(f'{LEAFLY_URI}/search?q={strain_name}')
-    soup = BeautifulSoup(response.text, 'html.parser')
-    strains_data = json.loads(soup.find(id='__NEXT_DATA__').string)[
-        'props'
-    ]['initialState']['search']['strain']
+    response = requests.get(LEAFLY_URI, params={'q': strain_name})
+    strains_data = response.json()['hits']['strain']
 
     return [
         Strain(
