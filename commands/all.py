@@ -64,7 +64,7 @@ def salve(self, channel, user, to=None):
     self.say(channel, msg, user)
 
 
-@bot.command('.*(?i)doobie doobie doo')
+@bot.command('(?i).*doobie doobie doo')
 @bot.command('!roll')
 def doobie_doobie_do(self, channel, user):
     url = 'https://youtu.be/j4XhDpSgHrs'
