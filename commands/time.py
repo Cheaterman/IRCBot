@@ -5,7 +5,7 @@ from pytz import timezone
 from ircbot import bot
 
 
-@bot.command('!time(?:\s+((?:[\w/]+\s*)+))?')
+@bot.command(r'!time(?:\s+((?:[\w/]+\s*)+))?')
 def time(self, channel, user, argv=None):
     if not argv:
         return get_time(self, channel, user)
@@ -36,6 +36,7 @@ def time(self, channel, user, argv=None):
         self.say(channel, msg, user)
     else:
         get_time(self, channel, of=argv[0], to=user)
+
 
 def get_time(self, channel, of, to=None):
     time_message = "It is currently {}{}"

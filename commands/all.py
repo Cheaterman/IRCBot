@@ -27,6 +27,7 @@ def help(self, channel, user):
         msg += command + (', ' if i < len(commands) - 1 else '')
     self.say(channel, msg, user)
 
+
 @bot.command('!botsnack')
 @bot.command('(?i)(.+botsnack)')
 def botsnack(self, channel, user, msg=None):
@@ -34,6 +35,7 @@ def botsnack(self, channel, user, msg=None):
         return True
     msg = "Thanks! Nomnomnom :3"
     self.say(channel, msg, user)
+
 
 @bot.command('!fortune')
 def fortune(self, channel, user):
@@ -44,18 +46,23 @@ def fortune(self, channel, user):
         if line:
             self.logger.log("<%s> %s" % (self.nickname, line))
 
-@bot.command('!toke(?:\s+(\w+))?')
+
+@bot.command(r'!toke(?:\s+(\w+))?')
 def toke(self, channel, user, to=None):
     msg = "Puff! Puff! Pass{}! ^__^".format(' to {}'.format(to) if to else '')
     self.say(channel, msg, user)
 
+
 @bot.command('!dab')
 def dab(self, channel, user):
     self.say(channel, "Yayyy superwax! Enjoy ^__^", user)
-@bot.command('!salve(?:\s+(\w+))?')
+
+
+@bot.command(r'!salve(?:\s+(\w+))?')
 def salve(self, channel, user, to=None):
     msg = "Saaaaaaaaaalve{}! ^__^".format(' to {}'.format(to) if to else '')
     self.say(channel, msg, user)
+
 
 @bot.command('.*(?i)doobie doobie doo')
 @bot.command('!roll')
@@ -64,7 +71,8 @@ def doobie_doobie_do(self, channel, user):
     msg = "{} owiiiiii! ^__^".format(url)
     self.say(channel, msg, user)
 
-@bot.command('!drug(?:\s+(\w+))?')
+
+@bot.command(r'!drug(?:\s+(\w+))?')
 def drug(self, channel, user, to=None):
     drugs = [
         'cocaine',
@@ -89,15 +97,18 @@ def drug(self, channel, user, to=None):
     )
     self.say(channel, msg, to if to else user)
 
-@bot.command('!drink(?:\s+(\w+))?')
+
+@bot.command(r'!drink(?:\s+(\w+))?')
 def drink(self, channel, user, to=None):
     msg = "Owiii cheers{}! ^__^".format((' ' + to) if to else '')
     self.say(channel, msg, user)
+
 
 @bot.command('!join ([^ ]+)')
 def join(self, channel, user, target):
     if user == 'Cheaterman':
         self.join(target)
+
 
 @bot.command('!part ([^ ]+)')
 def part(self, channel, user, target):

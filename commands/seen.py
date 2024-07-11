@@ -7,36 +7,36 @@ from ircbot import bot
 from chatlog import DATE_FORMAT
 
 
-@bot.command('!seen (\w+)')
+@bot.command(r'!seen (\w+)')
 def seen(self, channel, user, nick):
     log_regexp = (
         (
-            "\[[^\]]+\] <{}> (.*)",
+            r"\[[^\]]+\] <{}> (.*)",
             "{} was last seen {} ago saying « {} »"
         ),
         (
-            "\[[^\]]+\] \* {} (.*)",
+            r"\[[^\]]+\] \* {} (.*)",
             "{} was last seen {} ago, « {} »"
         ),
         (
-            "\[[^\]]+\] {} is now known as (.*)",
+            r"\[[^\]]+\] {} is now known as (.*)",
             "{} was last seen {} ago, changing name to « {} »"
         ),
         (
-            "\[[^\]]+\] {} joined channel",
+            r"\[[^\]]+\] {} joined channel",
             "{} was last seen {} ago, joining channel"
         ),
         (
-            "\[[^\]]+\] {} left channel \((.*)\)",
+            r"\[[^\]]+\] {} left channel \((.*)\)",
             "{} was last seen {} ago, leaving channel ({})"
         ),
         (
-            "\[[^\]]+\] {} quit \((.*)\)",
+            r"\[[^\]]+\] {} quit \((.*)\)",
             "{} was last seen {} ago, quitting ({})"
         ),
     )
     log_regexp = [(re.compile(pattern.format(nick)), msg) for pattern, msg in log_regexp]
-    time_regexp = re.compile("\[(\d+/\d+/\d+ \d+:\d+:\d+)\]")
+    time_regexp = re.compile(r"\[(\d+/\d+/\d+ \d+:\d+:\d+)\]")
 
     with open(self.logger.file) as file:
         for line in reversed(list(file)[:-1]):
@@ -50,6 +50,7 @@ def seen(self, channel, user, nick):
 
         msg = "Sorry, I haven't seen {}! :-$".format(nick)
         self.say(channel, msg, user)
+
 
 def get_time_interval(line, regexp):
     match = regexp.match(line)
